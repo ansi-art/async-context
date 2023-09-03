@@ -5,6 +5,27 @@ A construct for chainable contexts which use async functions compatible with cal
 Usage
 -----
 
+Assuming we have an object with a function that takes an object and returns a transformed version of that object:
+
+```javascript
+const myObject = {
+    foo: (str)=>{
+        return `foo ${str}`;
+    }
+};
+```
+
+Take that object and make a context using it:
+
+```javascript
+import { asyncContext } from '@ansi-art/async-context';
+const context = asyncContext(myObject);
+const value = await context.foo().foo().foo();
+// value === "foo foo foo"
+```
+
+That's all.
+
 Testing
 -------
 

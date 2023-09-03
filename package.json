@@ -1,19 +1,47 @@
 {
-    "name": "async-context",
-    "version": "0.0.1",
-    "main": "dist/index.cjs",
+    "name": "@ansi-art/async-context",
+    "version": "1.0.0",
+    "type": "module",
+    "main": "dist/index.mjs",
     "module": "src/index.mjs",
-    "homepage": "https://github.com/khrome/async-context",
-    "description": "A construct for chainable contexts which use async functions compatible with callbacks or promises",
+    "commonjs": "dist/index.cjs",
+    "exports": {
+        ".": {
+            "import": "./src/index.mjs",
+            "require": "./dist/index.cjs"
+        },
+        "./src/index.mjs": {
+            "import": "./src/index.mjs",
+            "require": "./dist/index.cjs"
+        },
+        "./dist/index.cjs": {
+            "import": "./src/index.mjs",
+            "require": "./dist/index.cjs"
+        },
+        "./src/kitchen-sync.mjs": {
+            "import": "./src/kitchen-sync.mjs",
+            "require": "./dist/kitchen-sync.cjs"
+        },
+        "./dist/kitchen-sync.cjs": {
+            "import": "./src/kitchen-sync.mjs",
+            "require": "./dist/kitchen-sync.cjs"
+        },
+        "./kitchen-sync": {
+            "import": "./src/kitchen-sync.mjs",
+            "require": "./dist/kitchen-sync.cjs"
+        }
+    },
+    "homepage": "https://github.com/ansi-art/async-context",
+    "description": "A construct for chainable contexts",
     "keywords": [],
     "author": "Abbey Hawk Sparrow <khrome>(http://abbeyhawksparrow.com)",
     "contributors": [],
     "repository": {
         "type": "git",
-        "url": "https://github.com/khrome/async-context"
+        "url": "https://github.com/ansi-art/async-context"
     },
     "bugs": {
-        "url": "https://api.github.com/repos/khrome/async-context/issues"
+        "url": "https://github.com/ansi-art/async-context/issues"
     },
     "moka": {
         "firefox": {

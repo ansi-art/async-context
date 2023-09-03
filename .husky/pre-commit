@@ -7,5 +7,6 @@ npm run headless-browser-test
 npm run build-commonjs
 npm run require-test
 npm run build-docs
-npm run build-types
+# convert to es class, then enable
+#npm run build-types
 npm run add-generated-files-to-commit
