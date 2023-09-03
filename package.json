@@ -1,19 +1,19 @@
 {
-    "name": "@environment-safe/template",
-    "version": "0.0.2",
+    "name": "async-context",
+    "version": "0.0.1",
     "main": "dist/index.cjs",
     "module": "src/index.mjs",
-    "homepage": "https://github.com/environment-safe/template",
-    "description": "A template for buildless module development",
+    "homepage": "https://github.com/khrome/async-context",
+    "description": "A construct for chainable contexts which use async functions compatible with callbacks or promises",
     "keywords": [],
-    "author": "Abbey Hawk Sparrow <@khrome> (http://patternweaver.com)",
+    "author": "Abbey Hawk Sparrow <khrome>(http://abbeyhawksparrow.com)",
     "contributors": [],
     "repository": {
         "type": "git",
-        "url": "git@github.com:environment-safe/template.git"
+        "url": "https://github.com/khrome/async-context"
     },
     "bugs": {
-        "url": "https://github.com/environment-safe/template/issues"
+        "url": "https://api.github.com/repos/khrome/async-context/issues"
     },
     "moka": {
         "firefox": {
@@ -34,7 +34,7 @@
                 "type": "webkit"
             }
         },
-        "stub": "src/stub.mjs",
+        "stub": "node_modules/@open-automaton/moka/src/stub.mjs",
         "stubs": [
             "express",
             "module",
