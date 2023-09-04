@@ -23,8 +23,7 @@ const missingReturnErrorText = 'Neither an error nor result was returned';
 * @function kitchenSync
 * Wrap callback oriented code that can be used as a promise, without 
 */
-const kitchenSync = (cb, opts) => {
-  let options = opts || {};
+const kitchenSync = (cb, options = {}) => {
   let callback = cb;
   if (!callback) {
     let resolve = null;

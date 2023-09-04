@@ -21,11 +21,27 @@ const makeSimpleObject = ()=>{
     return simpleObject;
 };
 
+// a simple object with a single function that works as a callback or promise
+const makeStringObject = ()=>{
+    let str = '';
+    let simpleObject = {
+        fn : (item, cb)=>{
+            const callback = kitchenSync(cb);
+            str += (item.text && str)?' '+item.text:item.text;
+            setTimeout(()=>{
+                callback(null, str);
+            });
+            return callback.return;
+        }
+    };
+    return simpleObject;
+};
+
 
 
 describe('async-context', ()=>{
-    describe('can chain contexts', ()=>{
-        it('works as a promise', (done)=>{
+    describe('works using a counter', ()=>{
+        it('counter works as a promise', (done)=>{
             let chain = Context.wrap(makeSimpleObject());
             chain.fn({}).fn({}).fn({}).promise.then((result)=>{
                 should.exist(result);
@@ -36,12 +52,30 @@ describe('async-context', ()=>{
             });
         });
 
-        it('works as a callback', (done)=>{
+        it('counter works as a callback', (done)=>{
             let chain = Context.wrap(makeSimpleObject());
             chain.fn({}).fn({}).fn({}, (err, result)=>{
                 should.not.exist(err);
                 should.exist(result);
                 result.should.equal(3);
+                done();
+            });
+        });
+    });
+    
+    describe('works using strings', ()=>{
+        it('strings work as a promise', async ()=>{
+            let chain = Context.wrap(makeStringObject());
+            const result = await chain.fn({text: 'foo'}).fn({text: 'foo'}).fn({text: 'foo'}).complete;
+            result.should.equal('foo foo foo');
+        });
+    
+        it('strings work as a callback', (done)=>{
+            let chain = Context.wrap(makeStringObject());
+            chain.fn({text: 'foo'}).fn({text: 'foo'}).fn({text: 'foo'}, (err, result)=>{
+                should.not.exist(err);
+                should.exist(result);
+                result.should.equal('foo foo foo');
                 done();
             });
         });
